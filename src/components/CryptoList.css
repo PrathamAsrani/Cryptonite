@@ -1,0 +1,61 @@
+.crypto-list {
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.crypto-list h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--highlight-color);
+}
+
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.crypto-table th, .crypto-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.crypto-table th {
+    background-color: var(--navbar-background-color);
+    color: var(--text-color);
+    border-bottom: 2px solid #ddd;
+}
+
+.crypto-table td {
+    border-bottom: 1px solid #ddd;
+}
+
+.crypto-item td:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.crypto-item td:first-child::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.positive-change {
+    color: green;
+}
+
+.negative-change {
+    color: red;
+}
