@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose, crypto }) => {
             if (!crypto) return;
 
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_COIN_GECKO_COINS_API}/${crypto.id}/market_chart?vs_currency=usd&days=30`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_COIN_GECKO_COINS_API}/${crypto.id}/market_chart?vs_currency=usd&days=7`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
