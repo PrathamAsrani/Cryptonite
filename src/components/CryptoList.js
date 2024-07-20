@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import Modal from './Modal';
 import './CryptoList.css';
 
 const CryptoList = ({ searchTerm }) => {
     const [cryptos, setCryptos] = useState([]);
+    const [selectedCrypto, setSelectedCrypto] = useState(null);
 
     useEffect(() => {
         const fetchCryptoData = async () => {
@@ -31,6 +33,14 @@ const CryptoList = ({ searchTerm }) => {
         crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const handleCryptoClick = (crypto) => {
+        setSelectedCrypto(crypto);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedCrypto(null);
+    };
+
     return (
         <div className="crypto-list">
             <h1>Trending Market</h1>
@@ -38,26 +48,27 @@ const CryptoList = ({ searchTerm }) => {
                 <thead>
                     <tr>
                         <th>Token</th>
-                        <th>Symbol</th>
+                        <th className="desktop-only">Symbol</th>
                         <th>Last Price</th>
                         <th>24H Change</th>
-                        <th>Market Cap</th>
+                        <th className="desktop-only">Market Cap</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredCryptos.map(crypto => (
-                        <tr key={crypto.id} className="crypto-item">
+                        <tr key={crypto.id} className="crypto-item" onClick={() => handleCryptoClick(crypto)}>
                             <td>{crypto.name}</td>
-                            <td>{crypto.symbol.toUpperCase()}</td>
+                            <td className="desktop-only">{crypto.symbol.toUpperCase()}</td>
                             <td>${crypto.current_price.toLocaleString()}</td>
                             <td className={crypto.price_change_percentage_24h > 0 ? 'positive-change' : 'negative-change'}>
                                 {crypto.price_change_percentage_24h.toFixed(2)}%
                             </td>
-                            <td>${crypto.market_cap.toLocaleString()}</td>
+                            <td className="desktop-only">${crypto.market_cap.toLocaleString()}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <Modal isOpen={!!selectedCrypto} onClose={handleCloseModal} crypto={selectedCrypto} />
         </div>
     );
 };

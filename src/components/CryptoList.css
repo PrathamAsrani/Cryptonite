@@ -34,22 +34,12 @@
 
 .crypto-table td {
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
 }
 
 .crypto-item td:first-child {
     display: flex;
     align-items: center;
-}
-
-.crypto-item td:first-child::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-right: 10px;
 }
 
 .positive-change {
@@ -58,4 +48,28 @@
 
 .negative-change {
     color: red;
+}
+
+.desktop-only {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .desktop-only {
+        display: table-cell;
+    }
+}
+
+@media (max-width: 768px) {
+    .crypto-list {
+        padding: 10px;
+    }
+
+    .crypto-table th, .crypto-table td {
+        padding: 10px;
+    }
+
+    .crypto-table td {
+        font-size: 14px;
+    }
 }

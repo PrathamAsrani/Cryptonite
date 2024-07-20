@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import CryptoList from '../components/CryptoList';
 import Navbar from '../components/Navbar';
-import './globals.css';
 
 const Page = () => {
     const [searchTerm, setSearchTerm] = useState('');
